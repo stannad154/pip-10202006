@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Directory</title>
+  </head>
+  <body>
+    <h1>Student Directory</h1>
+    <p>Student names from PostgreSQL:</p>
+
+    <button id="shuffleBtn">Shuffle Names</button>
+
+    <ul id="studentList">
+      {% for name in names %}
+      <li>{{ name }}</li>
+      {% endfor %}
+    </ul>
+
+    <script>
+      const button = document.getElementById("shuffleBtn");
+      const list = document.getElementById("studentList");
+
+      button.addEventListener("click", function () {
+        const students = Array.from(list.children);
+
+        // Fisher-Yates shuffle
+        for (let i = students.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [students[i], students[j]] = [students[j], students[i]];
+        }
+
+        students.forEach((student) => list.appendChild(student));
+      });
+    </script>
+  </body>
+</html>
