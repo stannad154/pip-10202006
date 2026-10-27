@@ -218,3 +218,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Python virtual environment
+.venv/
+
+# Database credentials
+.env
+
+# Student dataset
+data/
+
+# Python cache
+__pycache__/
